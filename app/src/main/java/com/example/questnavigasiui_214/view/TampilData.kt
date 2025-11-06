@@ -20,6 +20,10 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.material3.Button
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -71,6 +75,14 @@ fun TampilData(
                         )
                     }
                     HorizontalDivider(thickness = 1.dp, color = Color.Cyan)
+                }
+                Spacer(modifier = Modifier.height(10.dp))
+
+                Button(
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = onBackBtnClick
+                ) {
+                    Text(text = stringResource("Back"))
                 }
             }
         }
