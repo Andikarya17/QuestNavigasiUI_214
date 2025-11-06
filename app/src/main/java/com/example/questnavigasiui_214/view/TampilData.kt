@@ -11,6 +11,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.foundation.layout.Column
+
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,6 +41,12 @@ fun TampilData(
             )
         }
     ) { isiRuang ->
+        Column(
+            modifier = Modifier.padding(paddingValues = isiRuang),
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+
+        }
 
     }
 
