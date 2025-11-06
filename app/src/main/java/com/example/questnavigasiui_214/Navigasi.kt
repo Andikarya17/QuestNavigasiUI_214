@@ -1,4 +1,4 @@
-package com.example.questnavigasiui_214.view
+package com.example.questnavigasiui_214
 
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -33,13 +33,13 @@ fun DataApp(
             }
         }
     }
-        composable(route = Navigasi.Detail.name){
-            TampilData(
-                onBackBtnClick = {cancelAndBackToFormulir{navController}}
-            )
-        }
-
+    composable(route = Navigasi.Detail.name){
+        TampilData(
+            onBackBtnClick = {cancelAndBackToFormulir{navController}}
+        )
     }
+
+}
 }
 private fun cancelAndBackToFormulir(
     navController: NavController
