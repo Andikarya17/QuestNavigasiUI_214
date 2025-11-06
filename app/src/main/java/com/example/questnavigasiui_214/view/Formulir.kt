@@ -35,6 +35,20 @@ fun FormIsian(
             )
         }
     ) { isiRuang ->
+        val jenisK = listOf("Laki-laki", "Perempuan")
+        var nama by remember { mutableStateOf("") }
+        var alamat by remember { mutableStateOf("") }
+        var jenisKelamin by remember { mutableStateOf("") }
+
+        Column(
+            modifier = Modifier
+                .padding(paddingValues = isiRuang)
+                .fillMaxWidth(),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+        }
 
     }
 }
