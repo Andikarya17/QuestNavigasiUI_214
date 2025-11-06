@@ -1,6 +1,9 @@
 package com.example.questnavigasiui_214.view
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 enum class Navigasi {
     Formulir,
@@ -8,3 +11,7 @@ enum class Navigasi {
 }
 
 @Composable
+fun DataApp(
+    navController: NavController = rememberNavController(),
+    modifier: Modifier
+)
