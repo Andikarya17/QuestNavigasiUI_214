@@ -1,5 +1,6 @@
 package com.example.questnavigasiui_214.view
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.runtime.Composable
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.res.stringResource
@@ -12,7 +13,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.foundation.layout.Column
-
+import androidx.compose.foundation.layout.padding
 
 
 @OptIn(ExperimentalMaterial3Api::class)
