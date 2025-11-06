@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-
+import androidx.compose.ui.res.dimensionResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -46,7 +46,14 @@ fun TampilData(
             modifier = Modifier.padding(paddingValues = isiRuang),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
+            Column(
+                modifier = Modifier.padding(all = dimensionResource(id = R.dimen.padding_medium)),
+                verticalArrangement = Arrangement.spacedBy(
+                    space = dimensionResource(id = R.dimen.padding_small)
+                )
+            ) {
 
+            }
         }
 
     }
