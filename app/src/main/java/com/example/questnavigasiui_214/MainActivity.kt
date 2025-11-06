@@ -9,7 +9,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.example.questnavigasiui_214.ui.theme.QuestNavigasiUI_214Theme
-import com.example.questnavigasiui_214.view.FormIsian  // ✅ pastikan import ini sesuai package kamu
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,11 +21,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    FormIsian(
-                        onSubmitClick = {
-
-                        }
-                    )
+                    DataApp()
                 }
             }
         }

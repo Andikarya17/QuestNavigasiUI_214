@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.example.questnavigasiui_214.view
 
 import androidx.compose.foundation.layout.*
@@ -11,10 +13,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.questnavigasiui_214.R
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormIsian(
-    onSubmitClick: () -> Unit
+    jenisK: List<String> = listOf("Laki-laki", "Perempuan"),
+    onSubmitClick: (String, String, String) -> Unit
 ) {
     Scaffold(
         modifier = Modifier,
@@ -32,7 +34,7 @@ fun FormIsian(
             )
         }
     ) { isiRuang ->
-        val jenisK = listOf("Laki-laki", "Perempuan")
+
         var nama by remember { mutableStateOf("") }
         var alamat by remember { mutableStateOf("") }
         var jenisKelamin by remember { mutableStateOf("") }
@@ -44,6 +46,8 @@ fun FormIsian(
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+
+            // ---- Input Nama Lengkap ----
             OutlinedTextField(
                 value = nama,
                 onValueChange = { nama = it },
@@ -54,6 +58,7 @@ fun FormIsian(
                     .width(250.dp)
             )
 
+            // ---- Divider merah ----
             HorizontalDivider(
                 modifier = Modifier
                     .padding(all = 20.dp)
@@ -62,6 +67,32 @@ fun FormIsian(
                 color = Color.Red
             )
 
+            // ---- Pilihan Jenis Kelamin ----
+            Row {
+                jenisK.forEach { item ->
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(horizontal = 8.dp)
+                    ) {
+                        RadioButton(
+                            selected = (jenisKelamin == item),
+                            onClick = { jenisKelamin = item }
+                        )
+                        Text(text = item)
+                    }
+                }
+            }
+
+            // ---- Divider merah lagi ----
+            HorizontalDivider(
+                modifier = Modifier
+                    .padding(all = 20.dp)
+                    .width(250.dp),
+                thickness = 1.dp,
+                color = Color.Red
+            )
+
+            // ---- Input Alamat ----
             OutlinedTextField(
                 value = alamat,
                 onValueChange = { alamat = it },
@@ -70,14 +101,15 @@ fun FormIsian(
                 modifier = Modifier.width(250.dp)
             )
 
-        Spacer(modifier = Modifier.height(30.dp))
+            Spacer(modifier = Modifier.height(30.dp))
 
-        Button(
-            modifier = Modifier.fillMaxWidth(),
-            onClick = onSubmitClick
-        ) {
-            Text(text = stringResource(id = R.string.submit))
+            // ---- Tombol Submit ----
+            Button(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = { onSubmitClick(nama, jenisKelamin, alamat) }
+            ) {
+                Text(text = stringResource(id = R.string.submit))
+            }
         }
-
     }
-}}
+}

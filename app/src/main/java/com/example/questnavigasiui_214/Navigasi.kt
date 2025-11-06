@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -18,25 +18,37 @@ enum class Navigasi {
 
 @Composable
 fun DataApp(
-    navController: NavController = rememberNavController(),
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavHostController = rememberNavController()
 ) {
     Scaffold { isiRuang ->
         NavHost(
             navController = navController,
-            startDestination = Navigasi.Formulir.name,
-            modifier = Modifier.padding(paddingValues = isiRuang)
+            startDestination = "Formulir",
+            modifier = modifier.padding(paddingValues = isiRuang)
         ) {
-            composable(route = Navigasi.Formulir.name) {
+            // 📋 Screen Formulir
+            composable(route = "Formulir") {
                 FormIsian(
-                    onSubmitClick = {
-                        navController.navigate(route = Navigasi.Detail.name)
+                    onSubmitClick = { nama, jenisKelamin, alamat ->
+                        // navigasi ke halaman detail sambil kirim data
+                        navController.navigate("Detail/$nama/$jenisKelamin/$alamat")
                     }
                 )
             }
 
-            composable(route = Navigasi.Detail.name) {
+            // 📋 Screen Detail (TampilData)
+            composable(
+                route = "Detail/{nama}/{jenisKelamin}/{alamat}"
+            ) { backStackEntry ->
+                val nama = backStackEntry.arguments?.getString("nama") ?: ""
+                val jenisKelamin = backStackEntry.arguments?.getString("jenisKelamin") ?: ""
+                val alamat = backStackEntry.arguments?.getString("alamat") ?: ""
+
                 TampilData(
+                    nama = nama,
+                    jenisKelamin = jenisKelamin,
+                    alamat = alamat,
                     onBackBtnClick = {
                         cancelAndBackToFormulir(navController)
                     }
@@ -46,11 +58,9 @@ fun DataApp(
     }
 }
 
-private fun cancelAndBackToFormulir(
-    navController: NavController
-) {
+private fun cancelAndBackToFormulir(navController: NavHostController) {
     navController.popBackStack(
-        route = Navigasi.Formulir.name,
+        route = "Formulir",
         inclusive = false
     )
 }

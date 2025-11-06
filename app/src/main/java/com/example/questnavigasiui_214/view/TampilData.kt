@@ -28,23 +28,23 @@ import androidx.compose.foundation.layout.height
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TampilData(
+    nama: String,
+    jenisKelamin: String,
+    alamat: String,
     onBackBtnClick: () -> Unit
 ) {
+    // ✅ items diisi dengan parameter dari FormIsian
     val items = listOf(
-        Pair(first = stringResource(id = R.string.nama_lengkap), second = "Contoh Nama"),
-        Pair(first = stringResource(id = R.string.jenis_kelamin), second = "Lainnya"),
-        Pair(first = stringResource(id = R.string.alamat), second = "Yogyakarta")
+        Pair(first = stringResource(id = R.string.nama_lengkap), second = nama),
+        Pair(first = stringResource(id = R.string.jenis_kelamin), second = jenisKelamin),
+        Pair(first = stringResource(id = R.string.alamat), second = alamat)
     )
+
     Scaffold(
         modifier = Modifier,
         topBar = {
             TopAppBar(
-                title = {
-                    Text(
-                        text = stringResource(id = R.string.tampil),
-                        color = Color.White
-                    )
-                },
+                title = { Text(text = stringResource(id = R.string.tampil), color = Color.White) },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
                     containerColor = colorResource(id = R.color.teal_700)
                 )
@@ -57,9 +57,7 @@ fun TampilData(
         ) {
             Column(
                 modifier = Modifier.padding(all = dimensionResource(id = R.dimen.padding_medium)),
-                verticalArrangement = Arrangement.spacedBy(
-                    space = dimensionResource(id = R.dimen.padding_small)
-                )
+                verticalArrangement = Arrangement.spacedBy(space = dimensionResource(id = R.dimen.padding_small))
             ) {
                 items.forEach { item ->
                     Column {
@@ -76,18 +74,14 @@ fun TampilData(
                     }
                     HorizontalDivider(thickness = 1.dp, color = Color.Cyan)
                 }
-                Spacer(modifier = Modifier.height(10.dp))
-
+                Spacer(modifier = Modifier.height(height = 10.dp))
                 Button(
                     modifier = Modifier.fillMaxWidth(),
                     onClick = onBackBtnClick
                 ) {
                     Text(text = stringResource(id = R.string.back))
-
                 }
             }
         }
-
     }
-
 }
